@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,900&display=swap');
+
+* {
+    font-family: 'Poppins', cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: azure;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    overflow: hidden; /* Para que los corazones no se salgan de la pantalla */
+}
+
+.botones {
+    padding: 9px;
+    border-radius: 80px;
+    background-color: transparent;
+    border: none;
+    animation: bounce 2s infinite; /* Animación de rebote */
+    background-color: gold; /* Botón dorado */
+}
+
+.botones a {
+    background-color: gold; /* Botón dorado */
+    padding: 9px;
+    border-radius: 80px;
+    color: #fff;
+}
+
+.botones a:focus {
+    background-color: darkgoldenrod;
+}
+
+.greetings {
+    font-size: 7rem;
+    font-weight: 900;
+}
+
+.greetings > span {
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        color: #fff;
+        text-shadow: 0 0 12px yellow, 0 0 50px yellow, 0 0 100px yellow;
+    }
+    10%, 90% {
+        color: #111;
+        text-shadow: none;
+    }
+}
+
+.greetings > span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.greetings > span:nth-child(3) {
+    animation-delay: .4s;
+}
+
+.greetings > span:nth-child(4) {
+    animation-delay: .6s;
+}
+
+.greetings > span:nth-child(5) {
+    animation-delay: .8s;
+}
+
+.greetings > span:nth-child(6) {
+    animation-delay: 1s;
+}
+
+.description {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.button a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #111;
+}
+
+/* Estilos para los corazones que caen en cascada */
+.heart {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: yellow; /* Cambié el color a amarillo */
+    transform: rotate(-45deg);
+    top: -10%; /* Empieza un poco fuera de la pantalla */
+    animation: fall linear;
+    animation-duration: 4s;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: yellow; /* Corazones amarillos */
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -25px;
+    left: 0;
+}
+
+.heart::after {
+    left: 25px;
+    top: 0;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(-45deg);
+    }
+    100% {
+        transform: translateY(110vh) rotate(-45deg); /* Hace que caigan fuera de la pantalla */
+    }
+}
+
+/* Animación de rebote para el botón */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+@media screen and (max-width:574px) {
+    .greetings {
+        display: block;
+        font-size: 4rem;
+        font-weight: 800;
+        text-align: center;
+    }
+
+    .description {
+        font-size: 2rem;
+    }
+
+    .button a {
+        font-size: 1rem;
+    }
+}

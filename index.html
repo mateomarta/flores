@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/flowers.png" type="image/x-icon">
+    <title>Flowers</title>
+</head>
+
+<body>
+    <div class="greetings">
+        <span>T</span>
+        <span>E</span>
+        <span>A</span>
+        <span>M</span>
+        <span>O</span>
+        <span>!!!</span>
+    </div>
+    <div class="description">
+        <CEnter>
+        <span>SE QUE QUIERES FLORES AMARILLAS !!!</span>
+        <BR></BR>
+        <span>PERO LA DISTANCIA NO ME DEJA DARTE LO QUE TE MERECES:(</span>
+        <BR></BR>
+        <span>ASI QUE HICE LO QUE MEJOR SE HACER<3</span>
+        </CEnter>
+    </div>
+    <div class="button">
+        <button id="heart-button" class="botones">
+            <span style="color: #fff;">PRESIONA PARA ABRIR</span>
+        </button>
+        
+    </div>
+
+</body>
+<script>
+    document.getElementById("heart-button").addEventListener("click", function(event) {
+        event.preventDefault(); // Evita la redirección inmediata
+
+        let totalHearts = 100; // Número total de corazones a generar
+        let heartsCreated = 0;
+
+        // Crear corazones en cascada
+        const interval = setInterval(() => {
+            if (heartsCreated < totalHearts) {
+                const heart = document.createElement("div");
+                heart.classList.add("heart"); // Creamos un div que será estilizado como corazón
+                document.body.appendChild(heart);
+
+                // Posición de los corazones aleatoria en el eje X
+                heart.style.left = Math.random() * 100 + "vw"; 
+                heart.style.animationDuration = Math.random() * 2 + 3 + "s"; // Duración aleatoria entre 3 y 5 segundos
+
+                heartsCreated++;
+
+                // Eliminar el corazón después de que termine la animación
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000); // Eliminar corazones después de 5 segundos
+            }
+        }, 100); // Crear corazones rápidamente cada 100 ms
+
+        // Redirigir a la página después de 5 segundos
+        setTimeout(() => {
+            window.location.href = "flowers.html"; // Redirige a la página que desees
+        }, 5000); // Cambiar de página después de 5 segundos
+    });
+</script>
+
+
+
+
+
+
+
+</html>
